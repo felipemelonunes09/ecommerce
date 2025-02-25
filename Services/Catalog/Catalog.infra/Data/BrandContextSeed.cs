@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Infra.Data {
     public static class BrandContextSeed {
-        public static void seedData(IMongoCollection<ProductBrand> brandCollection) {
+        public static void SeedData(IMongoCollection<ProductBrand> brandCollection) {
             bool isPopulated = brandCollection.Find(b => true).Any();
             string path = Path.Combine("Data", "SeedData", "brands.json");
             if (!isPopulated) {
