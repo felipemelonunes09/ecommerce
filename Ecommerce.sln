@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Application", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Core", "Services\Catalog\Catalog.Core\Catalog.Core.csproj", "{AFC0028B-5A18-41FF-A12B-78160332DF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.infra", "Services\Catalog\Catalog.infra\Catalog.infra.csproj", "{DAF6A645-0BCA-4E21-BEB7-D8D313C3744C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Infra", "Services\Catalog\Catalog.Infra\Catalog.Infra.csproj", "{DAF6A645-0BCA-4E21-BEB7-D8D313C3744C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

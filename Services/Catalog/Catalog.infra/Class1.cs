@@ -1,4 +1,4 @@
-﻿namespace Catalog.infra;
+﻿namespace Catalog.Infra;
 
 public class Class1
 {
