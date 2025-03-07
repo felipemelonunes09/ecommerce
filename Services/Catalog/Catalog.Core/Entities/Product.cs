@@ -2,7 +2,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog.Core.Entities
 {
-    public abstract class Product : BaseEntity
+    public class Product : BaseEntity
     {
         [BsonElement("Name")]
         public string Name { get; set; }
