@@ -83,7 +83,7 @@ namespace Catalog.API.Controllers {
 
         [HttpPut]
         [Route("UpdateProduct")]
-        [ProducesResponseType(typeof(ProductResponse), (int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int) HttpStatusCode.OK)]
         public async Task<ActionResult<ProductResponse>> UpdateProduct([FromBody] UpdateProductCommand command) {
             var result = await this.mediator.Send(command);
             return Ok(result);
@@ -91,7 +91,7 @@ namespace Catalog.API.Controllers {
 
         [HttpDelete]
         [Route("[id]", Name="DeleteProduct")]
-        [ProducesResponseType((int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int) HttpStatusCode.OK)]
         public async Task<ActionResult<ProductResponse>> DeleteProduct(string id) {
             var command = new DeleteProductByIdCommand(id);
             var result = await this.mediator.Send(command);
