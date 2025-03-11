@@ -37,7 +37,7 @@ namespace Catalog.API.Controllers {
         [HttpGet]
         [Route("GetAllProducts")]
         [ProducesResponseType(typeof(IList<ProductResponse>), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductResponse>> GetAllProducts()
+        public async Task<ActionResult<IList<ProductResponse>>> GetAllProducts()
         {
             var query = new GetAllProductsQuery();
             var result = await this.mediator.Send(query);
@@ -47,7 +47,7 @@ namespace Catalog.API.Controllers {
         [HttpGet]
         [Route("GetAllBrands")]
         [ProducesResponseType(typeof(IList<BrandResponse>), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<BrandResponse>> GetAllBrands()
+        public async Task<ActionResult<IList<BrandResponse>>> GetAllBrands()
         {
             var query = new GetAllBrandsQuery();
             var result = await this.mediator.Send(query);
@@ -58,7 +58,7 @@ namespace Catalog.API.Controllers {
         [Route("GetAllTypes")]
         [ProducesResponseType(typeof(IList<TypesResponse>), (int) HttpStatusCode.OK)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
-        public async Task<ActionResult<ProductResponse>> GetAllTypes(string name) {
+        public async Task<ActionResult<IList<TypesResponse>>> GetAllTypes(string name) {
             var query = new GetProductByNameQuery(name);
             var result = await this.mediator.Send(query);
             return Ok(result);
@@ -67,7 +67,7 @@ namespace Catalog.API.Controllers {
         [HttpGet]
         [Route("[action]/{brand}", Name="GetProductByBrand")]
         [ProducesResponseType(typeof(IList<ProductResponse>), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductResponse>> GetProductByBrand(string brand) {
+        public async Task<ActionResult<IList<ProductResponse>>> GetProductByBrand(string brand) {
             var query = new GetProductByBrandQuery(brand);
             var result = await this.mediator.Send(query);
             return Ok(result);
@@ -84,7 +84,7 @@ namespace Catalog.API.Controllers {
         [HttpPut]
         [Route("UpdateProduct")]
         [ProducesResponseType(typeof(bool), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductResponse>> UpdateProduct([FromBody] UpdateProductCommand command) {
+        public async Task<ActionResult<bool>> UpdateProduct([FromBody] UpdateProductCommand command) {
             var result = await this.mediator.Send(command);
             return Ok(result);
         }
@@ -92,7 +92,7 @@ namespace Catalog.API.Controllers {
         [HttpDelete]
         [Route("[id]", Name="DeleteProduct")]
         [ProducesResponseType(typeof(bool), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductResponse>> DeleteProduct(string id) {
+        public async Task<ActionResult<bool>> DeleteProduct(string id) {
             var command = new DeleteProductByIdCommand(id);
             var result = await this.mediator.Send(command);
             return Ok(result);
