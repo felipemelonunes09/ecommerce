@@ -52,5 +52,15 @@ namespace Catalog.API.Controllers {
             var result = await this.mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetAllTypes")]
+        [ProducesResponseType(typeof(IList<ProductResponse>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType((int) HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ProductResponse>> GetAllTypes(string name) {
+            var query = new GetProductByNameQuery(name);
+            var result = await this.mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
