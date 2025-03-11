@@ -35,10 +35,20 @@ namespace Catalog.API.Controllers {
 
         [HttpGet]
         [Route("GetAllProducts")]
-        [ProducesResponseType(typeof(ProductResponse), (int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IList<ProductResponse>), (int) HttpStatusCode.OK)]
         public async Task<ActionResult<ProductResponse>> GetAllProducts()
         {
             var query = new GetAllProductsQuery();
+            var result = await this.mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetAllBrands")]
+        [ProducesResponseType(typeof(IList<BrandResponse>), (int) HttpStatusCode.OK)]
+        public async Task<ActionResult<BrandResponse>> GetAllBrands()
+        {
+            var query = new GetAllBrandsQuery();
             var result = await this.mediator.Send(query);
             return Ok(result);
         }
